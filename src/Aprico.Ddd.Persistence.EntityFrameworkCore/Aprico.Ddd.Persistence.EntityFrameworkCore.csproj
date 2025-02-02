@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+   <PropertyGroup>
+      <AssemblyName>Aprico.Ddd.Persistence.EntityFrameworkCore</AssemblyName>
+      <RootNamespace>Aprico</RootNamespace>
+      <Description>Aprico Consultants' Distributed Application Libraries: Entity Framework Persistence for Domain-Driven Design.</Description>
+   </PropertyGroup>
+
+   <PropertyGroup>
+      <RepositoryType>git</RepositoryType>
+      <RepositoryUrl>https://github.com/aprico-consult/Aprico.Ddd.Persistence.EntityFrameworkCore</RepositoryUrl>
+      <PublishRepositoryUrl>true</PublishRepositoryUrl>
+      <EmbedUntrackedSources>true</EmbedUntrackedSources>
+   </PropertyGroup>
+
+   <PropertyGroup>
+      <GeneratePackageOnBuild Condition=" '$(GeneratePackageOnBuild)' == '' ">false</GeneratePackageOnBuild>
+      <IsPackable>true</IsPackable>
+      <PackageId>$(AssemblyName)</PackageId>
+      <PackageDescription>$(Description)</PackageDescription>
+      <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+      <PackageTags>aprico distributed application library</PackageTags>
+      <IncludeSymbols>true</IncludeSymbols>
+      <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+   </PropertyGroup>
+
+   <ItemGroup>
+      <InternalsVisibleTo Include="$(AssemblyName).Tests"/>
+   </ItemGroup>
+
+</Project>
