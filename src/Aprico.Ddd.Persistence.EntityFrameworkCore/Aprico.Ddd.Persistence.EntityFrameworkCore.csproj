@@ -28,4 +28,9 @@
       <InternalsVisibleTo Include="$(AssemblyName).Tests"/>
    </ItemGroup>
 
+   <ItemGroup>
+      <PackageReference Include="Aprico.Ddd.Abstractions"/>
+      <PackageReference Include="Microsoft.EntityFrameworkCore"/>
+   </ItemGroup>
+
 </Project>
