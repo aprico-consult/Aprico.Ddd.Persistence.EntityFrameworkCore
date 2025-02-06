@@ -16,16 +16,16 @@
 
 #endregion
 
-using System;
 using Aprico.Ddd.Abstractions;
+using NodaTime;
 
 namespace Aprico.Ddd.Persistence.EntityFrameworkCore.Dummies;
 
-public class Aggregate : AggregateRoot<Guid>
+internal sealed class SomethingEvent : IDomainEvent
 {
-	internal Aggregate DoSomething()
-	{
-		EnqueueDomainEvent(new SomethingEvent());
-		return this;
-	}
+	#region IDomainEvent Members
+
+	public ZonedDateTime Timestamp { get; } = ClockProvider.Instance.UtcNow;
+
+	#endregion
 }
