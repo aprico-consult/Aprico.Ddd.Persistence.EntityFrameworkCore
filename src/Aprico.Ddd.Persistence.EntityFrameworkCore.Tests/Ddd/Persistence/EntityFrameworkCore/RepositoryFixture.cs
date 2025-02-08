@@ -29,9 +29,9 @@ public class RepositoryFixture
 {
 	[Theory]
 	[AutoData<AutoMoqCustomization>]
-	public async Task AddAsyncCallsDispatchOnAddedToRepository(AggregateRepository sut)
+	public async Task AddAsyncCallsDispatchOnAddedToRepository(DummyRepository sut)
 	{
-		var aggregateMock = new Mock<Aggregate>();
+		var aggregateMock = new Mock<DummyAggregate>();
 		aggregateMock.Protected()
 			.Setup("OnAddedToRepository")
 			.Verifiable();
@@ -43,9 +43,9 @@ public class RepositoryFixture
 
 	[Theory]
 	[AutoData<AutoMoqCustomization>]
-	public async Task RemoveAsyncCallsDispatchOnRemovedFromRepository(AggregateRepository sut)
+	public async Task RemoveAsyncCallsDispatchOnRemovedFromRepository(DummyRepository sut)
 	{
-		var aggregateMock = new Mock<Aggregate>();
+		var aggregateMock = new Mock<DummyAggregate>();
 		aggregateMock.Protected()
 			.Setup("OnRemovedFromRepository")
 			.Verifiable();

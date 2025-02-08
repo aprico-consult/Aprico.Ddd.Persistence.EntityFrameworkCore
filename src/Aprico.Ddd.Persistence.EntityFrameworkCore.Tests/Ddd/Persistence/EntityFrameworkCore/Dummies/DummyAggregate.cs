@@ -16,14 +16,16 @@
 
 #endregion
 
-using System.Diagnostics.CodeAnalysis;
-using Microsoft.EntityFrameworkCore;
+using System;
+using Aprico.Ddd.Abstractions;
 
 namespace Aprico.Ddd.Persistence.EntityFrameworkCore.Dummies;
 
-// @formatter:wrap_chained_method_calls wrap_if_long
-internal sealed class AggregateDbContext() : DbContext(new DbContextOptionsBuilder<AggregateDbContext>().UseInMemoryDatabase(nameof(AggregateDbContext)).Options)
+public class DummyAggregate : AggregateRoot<Guid>
 {
-	[SuppressMessage("ReSharper", "UnusedMember.Global")]
-	public DbSet<Aggregate> Aggregates { get; set; }
+	internal DummyAggregate DoSomething(bool queueDomainEvent = true)
+	{
+		if (queueDomainEvent) EnqueueDomainEvent(new DummyDomainEvent());
+		return this;
+	}
 }
