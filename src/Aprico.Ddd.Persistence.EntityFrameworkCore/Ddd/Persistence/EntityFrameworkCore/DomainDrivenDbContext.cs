@@ -22,6 +22,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Aprico.Ddd.Abstractions;
 using Aprico.Ddd.Persistence.EntityFrameworkCore.ChangeTracking.Extensions;
+using Aprico.Linq.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
@@ -95,13 +96,9 @@ public class DomainDrivenDbContext(DbContextOptions options, IDomainEventDispatc
 		var trackedEntities = ChangeTracker.GetTrackedEntitiesHavingDomainEvents();
 		while (trackedEntities.Length != 0)
 		{
-			// @formatter:max_line_length 303
-			if (iterationCount++ > MaximumEventDispatchingIterationCount)
-				throw new InvalidOperationException($"The domain event dispatching process exceeded the maximum allowed iteration count. This may indicate circular dependencies in domain events that need resolution or that the {nameof(MaximumEventDispatchingIterationCount)} value should be increased.");
-			// @formatter:max_line_length restore
-			foreach (var entity in trackedEntities)
-				await domainEventDispatcher.DispatchEntityDomainEventsAsync(entity, cancellationToken)
-					.ConfigureAwait(continueOnCapturedContext: false);
+			if (iterationCount++ > MaximumEventDispatchingIterationCount) throw new InvalidOperationException(MAX_DISPATCHING_ITERATIONS_EXCEEDED_ERROR_MESSAGE);
+			await trackedEntities.ForEachAsync(entity => domainEventDispatcher.DispatchEntityDomainEventsAsync(entity, cancellationToken))
+				.ConfigureAwait(continueOnCapturedContext: false);
 			trackedEntities = ChangeTracker.GetTrackedEntitiesHavingDomainEvents();
 		}
 		return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken)
@@ -116,4 +113,7 @@ public class DomainDrivenDbContext(DbContextOptions options, IDomainEventDispatc
 	/// </summary>
 	[SuppressMessage("ReSharper", "PropertyCanBeMadeInitOnly.Global", Justification = "Public API.")]
 	public int MaximumEventDispatchingIterationCount { get; set; } = 7;
+
+	internal const string MAX_DISPATCHING_ITERATIONS_EXCEEDED_ERROR_MESSAGE = $"The domain event dispatching process exceeded the maximum allowed iteration count. "
+		+ $"This may indicate circular dependencies in domain events that need resolution or that the {nameof(MaximumEventDispatchingIterationCount)} value should be increased.";
 }

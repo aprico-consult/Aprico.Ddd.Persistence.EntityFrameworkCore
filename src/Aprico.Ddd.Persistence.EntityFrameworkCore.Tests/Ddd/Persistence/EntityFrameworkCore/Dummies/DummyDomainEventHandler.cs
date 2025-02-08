@@ -16,17 +16,26 @@
 
 #endregion
 
+using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading;
+using System.Threading.Tasks;
 using Aprico.Ddd.Abstractions;
-using Microsoft.EntityFrameworkCore;
 
 namespace Aprico.Ddd.Persistence.EntityFrameworkCore.Dummies;
 
-// @formatter:wrap_chained_method_calls wrap_if_long
-internal sealed class DomainDrivenAggregateDbContext(IDomainEventDispatcher domainEventDispatcher) : DomainDrivenDbContext(
-	new DbContextOptionsBuilder<AggregateDbContext>().UseInMemoryDatabase(nameof(AggregateDbContext)).Options,
-	domainEventDispatcher)
+[SuppressMessage("Naming", "CA1711:Identifiers should not have incorrect suffix")]
+public class DummyDomainEventHandler : IDomainEventHandler<DummyDomainEvent>
 {
-	[SuppressMessage("ReSharper", "UnusedMember.Global")]
-	public DbSet<Aggregate> Aggregates { get; set; }
+	internal static Func<DummyDomainEvent, Task>? Hook { get; set; }
+
+	#region IDomainEventHandler<DummyDomainEvent> Members
+
+	[SuppressMessage("ReSharper", "UseConfigureAwaitFalse")]
+	public async Task HandleAsync(DummyDomainEvent domainEvent, CancellationToken cancellationToken = default)
+	{
+		if (Hook is not null) await Hook.Invoke(domainEvent);
+	}
+
+	#endregion
 }
