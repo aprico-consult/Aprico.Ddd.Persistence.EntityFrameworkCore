@@ -69,8 +69,10 @@ public class ReadOnlyRepository<TEntity, TKey> : IQueryableReadOnlyRepository<TE
 	/// <inheritdoc/>
 	public async Task<TEntity> GetByIdAsync(TKey id, CancellationToken cancellationToken = default)
 	{
-		return await FindByIdAsync(id, cancellationToken)
-			.ConfigureAwait(continueOnCapturedContext: false) ?? throw new EntityNotFoundException($"Entity '{typeof(TEntity)} {{ {nameof(Entity<TKey>.Id)}: '{id}' }} not found.");
+		var entity = await FindByIdAsync(id, cancellationToken)
+			.ConfigureAwait(continueOnCapturedContext: false);
+		EntityNotFoundException.ThrowIfNull(entity, $"{nameof(Entity<TKey>.Id)}: {id}");
+		return entity;
 	}
 
 	/// <inheritdoc/>
@@ -82,8 +84,7 @@ public class ReadOnlyRepository<TEntity, TKey> : IQueryableReadOnlyRepository<TE
 	/// <inheritdoc/>
 	public async Task<IEnumerable<TEntity?>> FindAllAsync(CancellationToken cancellationToken = default)
 	{
-		return await CreateQuery()
-			.ToListAsync(cancellationToken)
+		return await DbSet.ToListAsync(cancellationToken)
 			.ConfigureAwait(continueOnCapturedContext: false);
 	}
 
