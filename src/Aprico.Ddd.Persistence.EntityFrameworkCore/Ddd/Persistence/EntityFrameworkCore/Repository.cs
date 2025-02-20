@@ -54,8 +54,7 @@ public class Repository<TEntity, TKey> : ReadOnlyRepository<TEntity, TKey>, IRep
 	public async Task AddAsync(TEntity entity, CancellationToken cancellationToken = default)
 	{
 		ArgumentNullException.ThrowIfNull(entity);
-		await DbSet.AddAsync(entity, cancellationToken)
-			.ConfigureAwait(continueOnCapturedContext: false);
+		await DbSet.AddAsync(entity, cancellationToken);
 		this.DispatchOnAddedToRepository(entity);
 	}
 

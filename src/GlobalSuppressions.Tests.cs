@@ -22,4 +22,3 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Design", "CA1034:Nested types should not be visible", Justification = "Using nested classes is a common organizational approach in xUnit tests.")]
 [assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider")]
 [assembly: SuppressMessage("Maintainability", "CA1515:Consider making public types internal", Justification = "Unit requires test classes to be public")]
-[assembly: SuppressMessage("Reliability", "CA2007:Consider calling ConfigureAwait on the awaited task", Justification = "https://xunit.net/xunit.analyzers/rules/xUnit1030")]

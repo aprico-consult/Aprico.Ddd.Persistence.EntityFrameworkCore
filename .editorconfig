@@ -302,12 +302,11 @@ resharper_wrong_indent_size_highlighting = warning
 
 [*.cs]
 indent_style = tab
-configure_await_analysis_mode = library
+dotnet_diagnostic.CA2007.severity = none
+configure_await_analysis_mode = ui
 
 [*Fixture.cs]
-configure_await_analysis_mode = ui # do not call ConfigureAwait in test method, https://xunit.net/xunit.analyzers/rules/xUnit1030
 resharper_member_can_be_file_local_highlighting = none
-resharper_nullable_warning_suppression_is_used_highlighting = none
 
 [*.{designer,g}.cs]
 generated_code = true

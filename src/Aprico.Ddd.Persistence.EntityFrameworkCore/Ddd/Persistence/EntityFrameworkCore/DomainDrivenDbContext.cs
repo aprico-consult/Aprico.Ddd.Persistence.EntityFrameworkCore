@@ -97,12 +97,10 @@ public class DomainDrivenDbContext(DbContextOptions options, IDomainEventDispatc
 		while (trackedEntities.Length != 0)
 		{
 			if (iterationCount++ > MaximumEventDispatchingIterationCount) throw new InvalidOperationException(MAX_DISPATCHING_ITERATIONS_EXCEEDED_ERROR_MESSAGE);
-			await trackedEntities.ForEachAsync(entity => domainEventDispatcher.DispatchEntityDomainEventsAsync(entity, cancellationToken))
-				.ConfigureAwait(continueOnCapturedContext: false);
+			await trackedEntities.ForEachAsync(entity => domainEventDispatcher.DispatchEntityDomainEventsAsync(entity, cancellationToken));
 			trackedEntities = ChangeTracker.GetTrackedEntitiesHavingDomainEvents();
 		}
-		return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken)
-			.ConfigureAwait(continueOnCapturedContext: false);
+		return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
 	}
 
 	#endregion
