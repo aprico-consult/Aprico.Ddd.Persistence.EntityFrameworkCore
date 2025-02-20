@@ -24,6 +24,7 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Aprico.Ddd.Abstractions;
+using Aprico.Ddd.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Aprico.Ddd.Persistence.EntityFrameworkCore;
@@ -68,9 +69,7 @@ public class ReadOnlyRepository<TEntity, TKey> : IQueryableReadOnlyRepository<TE
 	/// <inheritdoc/>
 	public async Task<TEntity> GetByIdAsync(TKey id, CancellationToken cancellationToken = default)
 	{
-		var entity = await FindByIdAsync(id, cancellationToken);
-		EntityNotFoundException.ThrowIfNull(entity, $"{nameof(Entity<TKey>.Id)}: {id}");
-		return entity;
+		return (await FindByIdAsync(id, cancellationToken)).UnlessEntityIsNotFound(() => $"{nameof(Entity<TKey>.Id)}: {id}");
 	}
 
 	/// <inheritdoc/>
