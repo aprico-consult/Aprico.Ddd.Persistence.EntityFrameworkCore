@@ -1,4 +1,4 @@
-#region region Copyright & License
+#region Copyright & License
 
 // Copyright © 2024 - 2025 Aprico Consultants
 // 
