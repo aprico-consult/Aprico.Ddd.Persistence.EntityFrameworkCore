@@ -10,6 +10,7 @@
       <PackageVersion Include="AutoFixture" Version="4.18.1"/>
       <PackageVersion Include="AutoFixture.AutoMoq" Version="4.18.1"/>
       <PackageVersion Include="AutoFixture.Xunit2" Version="4.18.1"/>
+      <PackageVersion Include="Be.Stateless.Extensions" Version="3.0.25053-preview41399"/>
       <PackageVersion Include="coverlet.collector" Version="6.0.4"/>
       <PackageVersion Include="FluentAssertions" Version="8.0.1"/>
       <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.1"/>
