@@ -30,8 +30,10 @@
 
    <ItemGroup>
       <PackageReference Include="Aprico.Ddd.Abstractions"/>
+      <PackageReference Include="Aprico.Persistence.Abstractions"/>
       <PackageReference Include="Be.Stateless.Extensions"/>
       <PackageReference Include="Microsoft.EntityFrameworkCore"/>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational"/>
    </ItemGroup>
 
 </Project>
