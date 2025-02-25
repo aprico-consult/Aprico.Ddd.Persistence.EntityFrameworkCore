@@ -19,6 +19,7 @@
 using System;
 using System.Threading.Tasks;
 using Aprico.Ddd.Persistence.EntityFrameworkCore.Dummies;
+using Aprico.Persistence.EntityFrameworkCore.Dummies;
 using AutoFixture.Xunit2;
 
 namespace Aprico.Ddd.Persistence.EntityFrameworkCore;

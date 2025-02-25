@@ -16,10 +16,11 @@
 
 #endregion
 
+using Aprico.Ddd.Persistence.EntityFrameworkCore.Dummies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Aprico.Ddd.Persistence.EntityFrameworkCore.Dummies;
+namespace Aprico.Persistence.EntityFrameworkCore.Dummies;
 
 // @formatter:wrap_chained_method_calls wrap_if_long
 public sealed class DummySqliteDbContext() : DbContext(new DbContextOptionsBuilder<DummySqliteDbContext>().UseSqlite("DataSource=:memory:").Options)

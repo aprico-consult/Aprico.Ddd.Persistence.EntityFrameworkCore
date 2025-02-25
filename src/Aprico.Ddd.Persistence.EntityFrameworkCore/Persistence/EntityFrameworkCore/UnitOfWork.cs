@@ -25,7 +25,7 @@ using Aprico.Persistence.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace Aprico.Ddd.Persistence.EntityFrameworkCore;
+namespace Aprico.Persistence.EntityFrameworkCore;
 
 /// <summary>
 /// Implements a unit of work pattern for EntityFrameworkCore, managing database transactions and changes for a single
@@ -51,7 +51,7 @@ namespace Aprico.Ddd.Persistence.EntityFrameworkCore;
 /// ]]></code>
 /// </example>
 [SuppressMessage("ReSharper", "MemberCanBeInternal", Justification = "Public API.")]
-public class UnitOfWork : Aprico.Persistence.Abstractions.UnitOfWork
+public class UnitOfWork : Abstractions.UnitOfWork
 {
 	public UnitOfWork(DbContext dbContext)
 	{

@@ -21,10 +21,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Aprico.AutoFixture.Xunit2;
 using Aprico.Ddd.Persistence.EntityFrameworkCore.Dummies;
+using Aprico.Persistence.EntityFrameworkCore.Dummies;
 using AutoFixture.AutoMoq;
 using Microsoft.EntityFrameworkCore;
 
-namespace Aprico.Ddd.Persistence.EntityFrameworkCore;
+namespace Aprico.Persistence.EntityFrameworkCore;
 
 public class UnitOfWorkFixture
 {

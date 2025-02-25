@@ -17,9 +17,10 @@
 #endregion
 
 using System.Diagnostics.CodeAnalysis;
+using Aprico.Ddd.Persistence.EntityFrameworkCore.Dummies;
 using Microsoft.EntityFrameworkCore;
 
-namespace Aprico.Ddd.Persistence.EntityFrameworkCore.Dummies;
+namespace Aprico.Persistence.EntityFrameworkCore.Dummies;
 
 // @formatter:wrap_chained_method_calls wrap_if_long
 internal sealed class DummyDbContext() : DbContext(new DbContextOptionsBuilder<DummyDbContext>().UseInMemoryDatabase(nameof(DummyDbContext)).Options)

@@ -18,6 +18,7 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
+using Aprico.Persistence.EntityFrameworkCore.Dummies;
 
 namespace Aprico.Ddd.Persistence.EntityFrameworkCore.Dummies;
 
