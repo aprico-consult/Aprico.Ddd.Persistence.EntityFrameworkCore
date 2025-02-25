@@ -51,7 +51,7 @@ namespace Aprico.Persistence.EntityFrameworkCore;
 /// ]]></code>
 /// </example>
 [SuppressMessage("ReSharper", "MemberCanBeInternal", Justification = "Public API.")]
-public class UnitOfWork : Abstractions.UnitOfWork
+public class UnitOfWork : UnitOfWorkBase
 {
 	public UnitOfWork(DbContext dbContext)
 	{
