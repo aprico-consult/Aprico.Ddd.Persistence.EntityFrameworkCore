@@ -1,4 +1,3 @@
-<!-- https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-by-directory#directorybuildprops-and-directorybuildtargets -->
 <!--
 
   Copyright © 2024 - 2025 Aprico Consultants
@@ -16,6 +15,7 @@
   limitations under the License.
 
 -->
+<!-- https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-by-directory#directorybuildprops-and-directorybuildtargets -->
 <Project>
 
    <PropertyGroup>
