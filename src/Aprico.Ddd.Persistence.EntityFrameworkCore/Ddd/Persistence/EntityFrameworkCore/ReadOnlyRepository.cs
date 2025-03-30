@@ -23,7 +23,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Aprico.Ddd.Abstractions;
 using Aprico.Ddd.Extensions;
 using Microsoft.EntityFrameworkCore;
 

@@ -19,7 +19,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Aprico.Ddd.Abstractions;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Aprico.Ddd.Persistence.EntityFrameworkCore.ChangeTracking.Extensions;

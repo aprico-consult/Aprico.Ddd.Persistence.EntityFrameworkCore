@@ -17,7 +17,6 @@
 #endregion
 
 using System.Diagnostics.CodeAnalysis;
-using Aprico.Ddd.Abstractions;
 using Aprico.Persistence.EntityFrameworkCore.Dummies;
 using Microsoft.EntityFrameworkCore;
 

@@ -16,7 +16,6 @@
 
 #endregion
 
-using Aprico.Ddd.Abstractions;
 using NodaTime;
 
 namespace Aprico.Ddd.Persistence.EntityFrameworkCore.Dummies;

@@ -17,7 +17,6 @@
 #endregion
 
 using System;
-using Aprico.Ddd.Abstractions;
 
 namespace Aprico.Ddd.Persistence.EntityFrameworkCore.Dummies;
 

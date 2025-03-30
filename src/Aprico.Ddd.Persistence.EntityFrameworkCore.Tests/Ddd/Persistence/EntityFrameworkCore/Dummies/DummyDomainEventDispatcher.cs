@@ -19,7 +19,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
-using Aprico.Ddd.Abstractions;
 using Aprico.Ddd.Extensions;
 
 namespace Aprico.Ddd.Persistence.EntityFrameworkCore.Dummies;
